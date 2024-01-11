@@ -1,0 +1,12 @@
+.imgContainer{
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    padding-bottom: 200px;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
