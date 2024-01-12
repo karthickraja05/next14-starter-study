@@ -28,13 +28,11 @@
 .imgContainer{
     flex: 1;
     position: relative;
+    
 }
 
 .img{
-    width: 60%; /* or your desired width */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove any default inline spacing */
-    margin: 0 auto; /* Center the image horizontally */
+    object-fit: contain;
 }
 
 .data{
