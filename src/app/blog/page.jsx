@@ -53,8 +53,8 @@ const Blog = () => {
       return (
       <div className={styles.container}>
             {
-                  postDetails.map((item) => (
-                        <div className={styles.post}>
+                  postDetails.map((item,index) => (
+                        <div className={styles.post} key={index}>
                               <PostCard  localItem={item} />
                         </div>
                   ))
