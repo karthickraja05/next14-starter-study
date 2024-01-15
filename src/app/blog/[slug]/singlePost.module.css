@@ -54,3 +54,10 @@
 .description{
     text-align: justify;
 }
+
+
+@media  (max-width: 1024px) {
+    .imgContainer{
+        display: none;
+    }
+}

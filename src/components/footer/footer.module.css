@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -7,10 +7,18 @@
     color: gray;
 }
 
-.logo{
+.logo {
     font-weight: bold;
 }
 
-.text{
+.text {
     font-size: 12px;
+}
+
+@media (max-width: 576px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
 }
