@@ -5,7 +5,7 @@ const SingleBlog = () => {
       return (
             <div className={styles.container}>
                   <div className={styles.imgContainer}>
-                        <Image src="https://cdn.pixabay.com/photo/2023/09/23/11/26/bird-8270722_640.jpg" fill className={styles.img} />
+                        <Image src="https://cdn.pixabay.com/photo/2023/09/23/11/26/bird-8270722_640.jpg" fill className={styles.img} alt="Images"/>
                   </div>
                   <div className={styles.textContainer}>
                         <h1 className={styles.title}>Title</h1>
