@@ -22,6 +22,10 @@ const links = [
             title: "Contact",
             path: '/contact'
       },
+      {
+            title: "Navigation Test",
+            path: '/navigation-test'
+      },
 ];
 
 

@@ -49,7 +49,10 @@ const postDetails = [
 
 
 
-const Blog = () => {
+const Blog = ({params,searchParams}) => {
+      console.log(params);
+      console.log(searchParams);
+
       return (
       <div className={styles.container}>
             {
