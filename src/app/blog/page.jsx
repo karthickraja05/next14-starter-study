@@ -1,6 +1,7 @@
 // "use client";
 import PostCard from '@/components/postCard/PostCard';
 import styles from './blog.module.css';
+import { getPosts } from '@/lib/data';
 
 
 const postDetails = [
@@ -49,31 +50,31 @@ const postDetails = [
 ]
 
 
-const apiData = async () => {
-      const res = await fetch('https://jsonplaceholder.org/posts',{
-            // next: {
-            //       revalidate: 3600
-            // }
-            // cache: "no-store"
-            cache: "force-cache"
-      });
+// const apiData = async () => {
+//       const res = await fetch('https://jsonplaceholder.org/posts',{
+//             // next: {
+//             //       revalidate: 3600
+//             // }
+//             // cache: "no-store"
+//             cache: "force-cache"
+//       });
 
-      if(!res.ok){
-            throw new Error('Something went Wrong');
-      }
+//       if(!res.ok){
+//             throw new Error('Something went Wrong');
+//       }
 
-      const json = await res.json();
-      return json;
+//       const json = await res.json();
+//       return json;
 
-}
+// }
 
 
 const Blog = async ({params,searchParams}) => {
       // console.log(params);
       // console.log(searchParams);
 
-      const apiPostData = await apiData();
-
+      // const apiPostData = await apiData();
+      const apiPostData = await getPosts();
       return (
             <div className={styles.container}>
                   {
