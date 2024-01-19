@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './singlePost.module.css'
 import UserPost from '@/components/userPost/UserPost';
 import { Suspense } from 'react';
+import { randomQuotes } from '@/lib/data';
 
 
 const apiData = async (post_id) => {
@@ -26,6 +27,8 @@ const SingleBlog = async ({params,searchParams}) => {
       
       const postId = params;
 
+      const quote = await randomQuotes();
+
       const postData = await apiData(postId.slug);
 
       return (
@@ -46,6 +49,9 @@ const SingleBlog = async ({params,searchParams}) => {
                         </div>
                         <div className={styles.description}>
                         { postData.content }
+                        </div>
+                        <div className={styles.description}>
+                        Quotes: { quote }
                         </div>
                   </div>
             </div>
