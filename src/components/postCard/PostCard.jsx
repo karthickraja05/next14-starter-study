@@ -7,14 +7,14 @@ const PostCard = ({localItem}) => {
             <div className={styles.container}>
                   <div className={styles.top}>
                         <div className={styles.imgContainer}>
-                              <Image src={localItem.image} alt='Post Card Image' className={styles.img} fill />
+                              <Image src={localItem.thumbnail} alt='Post Card Image' className={styles.img} fill />
                         </div>
                         <span className={styles.date}>{localItem.date}</span>
                   </div>
                   <div className={styles.bottom}>
                         <h1 className={styles.title}>{localItem.title}</h1>
-                        <p className={styles.desc}>{localItem.description}</p>
-                        <Link className={styles.link} href="/blog/12">Read More</Link>
+                        <p className={styles.desc}>{localItem.content}</p>
+                        <Link className={styles.link} href={`/blog/${localItem.id}`}>Read More</Link>
                   </div>
             </div>
       );

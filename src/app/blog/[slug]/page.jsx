@@ -1,31 +1,51 @@
 import Image from 'next/image';
 import styles from './singlePost.module.css'
+import UserPost from '@/components/userPost/UserPost';
+import { Suspense } from 'react';
 
-const SingleBlog = ({params,searchParams}) => {
-      console.log(params);
-      console.log(searchParams);
+
+const apiData = async (post_id) => {
+      const res = await fetch(`https://jsonplaceholder.org/posts/${post_id}`,{
+            // next: {
+            //       revalidate: 3600
+            // }
+            cache: "no-store",
+            // cache: "no-cache"
+      });
+
+      if(!res.ok){
+            throw new Error('Something went Wrong');
+      }
+
+      const json = await res.json();
+      return json;
+
+}
+
+const SingleBlog = async ({params,searchParams}) => {
+      
+      const postId = params;
+
+      const postData = await apiData(postId.slug);
+
       return (
             <div className={styles.container}>
                   <div className={styles.imgContainer}>
-                        <Image src="https://cdn.pixabay.com/photo/2023/09/23/11/26/bird-8270722_640.jpg" fill className={styles.img} alt="Images"/>
+                        <Image src={postData.thumbnail} fill className={styles.img} alt="Images"/>
                   </div>
                   <div className={styles.textContainer}>
-                        <h1 className={styles.title}>Title</h1>
+                        <h1 className={styles.title}>{ postData.title }</h1>
                         <div className={styles.postdetails}>
-                              <div className={styles.avartar}>
-                              <Image src={'https://cdn.pixabay.com/photo/2023/09/23/11/26/bird-8270722_640.jpg'} alt='Avatar' width={70} height={70} className={styles.avartar1} />
-                              </div>
-                              <div className={styles.detail}>
-                                    <div className={styles.name}>Author</div>
-                                    <div className={styles.value}>Karthickraj</div>
-                              </div>
+                              <Suspense fallback={<div className={styles.loading}>Loading ... </div>}>
+                                    <UserPost userId={postData.userId} />
+                              </Suspense>
                               <div className={styles.detail}>
                                     <div className={styles.name}>Published</div>
-                                    <div className={styles.value}>Nov 1, 2024</div>
+                                    <div className={styles.value}>{ postData.publishedAt }</div>
                               </div>
                         </div>
                         <div className={styles.description}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                        { postData.content }
                         </div>
                   </div>
             </div>

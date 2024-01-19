@@ -1,0 +1,25 @@
+.detail{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.name{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.value{
+    color: gray
+}
+
+.avartar1 {
+    border-radius: 50px;
+}
+
+.container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}

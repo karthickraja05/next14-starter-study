@@ -1,3 +1,4 @@
+// "use client";
 import PostCard from '@/components/postCard/PostCard';
 import styles from './blog.module.css';
 
@@ -48,21 +49,52 @@ const postDetails = [
 ]
 
 
+const apiData = async () => {
+      const res = await fetch('https://jsonplaceholder.org/posts',{
+            // next: {
+            //       revalidate: 3600
+            // }
+            // cache: "no-store"
+            cache: "force-cache"
+      });
 
-const Blog = ({params,searchParams}) => {
-      console.log(params);
-      console.log(searchParams);
+      if(!res.ok){
+            throw new Error('Something went Wrong');
+      }
+
+      const json = await res.json();
+      return json;
+
+}
+
+
+const Blog = async ({params,searchParams}) => {
+      // console.log(params);
+      // console.log(searchParams);
+
+      const apiPostData = await apiData();
 
       return (
-      <div className={styles.container}>
-            {
-                  postDetails.map((item,index) => (
-                        <div className={styles.post} key={index}>
-                              <PostCard  localItem={item} />
-                        </div>
-                  ))
-            }
-      </div>);
+            <div className={styles.container}>
+                  {
+                        apiPostData.map((item,index) => (
+                              <div className={styles.post} key={item.id}>
+                                    <PostCard  localItem={item} />
+                              </div>
+                        ))
+                  }
+            </div>);
+
+      // return (
+      // <div className={styles.container}>
+      //       {
+      //             postDetails.map((item,index) => (
+      //                   <div className={styles.post} key={index}>
+      //                         <PostCard  localItem={item} />
+      //                   </div>
+      //             ))
+      //       }
+      // </div>);
 };
 
 export default Blog;
