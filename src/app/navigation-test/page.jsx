@@ -2,8 +2,6 @@
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-
-
 const NavigationTest = () => {
 
     const router = useRouter();

@@ -69,6 +69,8 @@ const postDetails = [
 // }
 
 
+
+
 const Blog = async ({params,searchParams}) => {
       // console.log(params);
       // console.log(searchParams);
