@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './postcard.module.css';
 import Image from 'next/image';
+import DeletePost from '../deletePost/DeletePost';
 
 const PostCard = ({ localItem }) => {
       return (
@@ -17,6 +18,9 @@ const PostCard = ({ localItem }) => {
                         <h1 className={styles.title}>{localItem.title}</h1>
                         <p className={styles.desc}>{localItem.description}</p>
                         <Link className={styles.link} href={`/blog/${localItem.slug}`}>Read More</Link>
+                        <div>
+                              <DeletePost postId={localItem.id} />
+                        </div>
                   </div>
             </div>
       );
