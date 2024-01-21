@@ -1,0 +1,9 @@
+.goback_button {
+    padding: 10px;
+    background-color: var(--btn);
+    border: none;
+    color: var(--text);
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}

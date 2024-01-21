@@ -3,6 +3,7 @@ import styles from './singlePost.module.css'
 import UserPost from '@/components/userPost/UserPost';
 import { Suspense } from 'react';
 import { getPost, randomQuotes } from '@/lib/data';
+import Goback from '@/components/goback/Goback';
 
 
 // const apiData = async (post_id) => {
@@ -35,10 +36,15 @@ const SingleBlog = async ({params,searchParams}) => {
       return (
             <div className={styles.container}>
                   <div className={styles.imgContainer}>
-                        { postData.img && <Image src={postData.img} fill className={styles.img} alt="Images"/> }
+                        <Image 
+                        src={ postData.img ? postData.img : 'https://cdn.pixabay.com/photo/2017/01/24/20/13/postcard-2006266_1280.png' } 
+                        fill className={styles.img} alt="Images"/>
                   </div>
                   <div className={styles.textContainer}>
+                        <div className={styles.titleContainer}>
                         <h1 className={styles.title}>{ postData.title }</h1>
+                        <Goback/>
+                        </div>
                         <div className={styles.postdetails}>
                               <Suspense fallback={<div className={styles.loading}>Loading ... </div>}>
                                     { postData.userId && <UserPost userId={postData.userId} /> }
