@@ -12,7 +12,7 @@ const PostCard = ({ localItem }) => {
                                     src={localItem.img ?? 'https://cdn.pixabay.com/photo/2017/01/24/20/13/postcard-2006266_1280.png'}
                                     alt='Post Card Image' className={styles.img} fill />
                         </div>
-                        <span className={styles.date}>{localItem.createdAt.toString().slice(4, 15)}</span>
+                        <span className={styles.date}>{localItem.createdAt.toString().slice(0,10)}</span>
                   </div>
                   <div className={styles.bottom}>
                         <h1 className={styles.title}>{localItem.title}</h1>

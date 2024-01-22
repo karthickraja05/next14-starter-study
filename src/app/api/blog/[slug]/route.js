@@ -9,7 +9,7 @@ export const GET = async (request,{params}) => {
     
     try{
         connectToDb();
-        const post = await Post.findOne({slug}).select('title description userId slug userId createdAt');
+        const post = await Post.findOne({slug}).select('title description userId slug userId createdAt img');
 
         // Extract only specific key values
         const { title, content } = post;

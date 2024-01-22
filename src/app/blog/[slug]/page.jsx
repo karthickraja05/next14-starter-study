@@ -6,23 +6,26 @@ import { getPost, randomQuotes } from '@/lib/data';
 import Goback from '@/components/goback/Goback';
 
 
-// const apiData = async (post_id) => {
-//       const res = await fetch(`https://jsonplaceholder.org/posts/${post_id}`,{
-//             // next: {
-//             //       revalidate: 3600
-//             // }
-//             cache: "no-store",
-//             // cache: "no-cache"
-//       });
+const apiData = async (post_id) => {
+      const url = 'http://localhost:3000/api/blog/'+post_id;
+      console.log(url);
+      // const url = 'https://jsonplaceholder.org/posts/'+post_id;
+      const res = await fetch(url,{
+            // next: {
+            //       revalidate: 3600
+            // }
+            cache: "no-store",
+            // cache: "no-cache"
+      });
 
-//       if(!res.ok){
-//             throw new Error('Something went Wrong');
-//       }
+      if(!res.ok){
+            throw new Error('Something went Wrong');
+      }
 
-//       const json = await res.json();
-//       return json;
+      const json = await res.json();
+      return json;
 
-// }
+}
 
 export const generateMetadata = async ({params}) => {
       const {slug} = params;
@@ -41,8 +44,8 @@ const SingleBlog = async ({params,searchParams}) => {
 
       const quote = await randomQuotes();
 
-      // const postData = await apiData(postId.slug);
-      const postData = await getPost(postId.slug);
+      const postData = await apiData(postId.slug);
+      // const // postData = await getPost(postId.slug);
 
       return (
             <div className={styles.container}>
@@ -62,7 +65,7 @@ const SingleBlog = async ({params,searchParams}) => {
                               </Suspense>
                               <div className={styles.detail}>
                                     <div className={styles.name}>Published</div>
-                                    <div className={styles.value}>{ postData.createdAt.toString().slice(4,15) }</div>
+                                    <div className={styles.value}>{ postData.createdAt.toString().slice(0,10) }</div>
                               </div>
                         </div>
                         <div className={styles.description}>

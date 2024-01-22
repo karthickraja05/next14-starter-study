@@ -50,23 +50,25 @@ const postDetails = [
 ]
 
 
-// const apiData = async () => {
-//       const res = await fetch('https://jsonplaceholder.org/posts',{
-//             // next: {
-//             //       revalidate: 3600
-//             // }
-//             // cache: "no-store"
-//             cache: "force-cache"
-//       });
+const apiData = async () => {
+      const url = 'http://localhost:3000/api/blog';
+      // const url = 'https://jsonplaceholder.org/posts';
+      const res = await fetch(url,{
+            // next: {
+            //       revalidate: 3600
+            // }
+            cache: "no-store"
+            // cache: "force-cache"
+      });
 
-//       if(!res.ok){
-//             throw new Error('Something went Wrong');
-//       }
+      if(!res.ok){
+            throw new Error('Something went Wrong');
+      }
 
-//       const json = await res.json();
-//       return json;
+      const json = await res.json();
+      return json;
 
-// }
+}
 
 
 
@@ -75,8 +77,9 @@ const Blog = async ({params,searchParams}) => {
       // console.log(params);
       // console.log(searchParams);
 
-      // const apiPostData = await apiData();
-      const apiPostData = await getPosts();
+      const apiPostData = await apiData();
+      console.log(apiPostData);
+      // const apiPostData = await getPosts();
       return (
             <div className={styles.container}>
                   {
