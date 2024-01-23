@@ -22,8 +22,8 @@ const NavigationTest = () => {
     //     console.log(searchParams.get(paramNames[i]))
     // }
 
-    console.log(allParams);
-    console.log(pathName);
+    // console.log(allParams);
+    // console.log(pathName);
 
 
     const handleClick = function(type){

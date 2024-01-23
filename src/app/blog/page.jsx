@@ -78,7 +78,7 @@ const Blog = async ({params,searchParams}) => {
       // console.log(searchParams);
 
       const apiPostData = await apiData();
-      console.log(apiPostData);
+      // console.log(apiPostData);
       // const apiPostData = await getPosts();
       return (
             <div className={styles.container}>
