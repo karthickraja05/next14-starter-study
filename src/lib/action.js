@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { Post } from "./model";
 import { connectToDb } from "./utils";
+import { signIn } from "./auth";
 
 
 export const sayHello = async () => {
@@ -48,4 +49,10 @@ export const deletePost = async (id) => {
         console.log(err);
         throw new Error('Failed to delete fetch');
     }
+}
+
+
+export const handleGithubLogin = async () => {
+    "use server";
+    await signIn("github");
 }

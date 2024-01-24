@@ -1,4 +1,5 @@
-import { auth, signIn } from "@/lib/auth";
+import { handleGithubLogin } from "@/lib/action";
+import { auth } from "@/lib/auth";
 
 const Login = async () => {
 
@@ -6,13 +7,10 @@ const Login = async () => {
 
       console.log(session);
 
-      const handleGithubLogin = async () => {
-            "use server";
-            await signIn("github");
-      }
+      
 
       return <div>
-            <form action={handleGithubLogin}>
+            <form action={'/api/auth/signin'}>
                   <button>Login with GitHub</button>
             </form>
       </div>;
