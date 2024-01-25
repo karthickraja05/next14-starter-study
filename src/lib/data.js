@@ -70,3 +70,31 @@ export const getUser = async (id) => {
         throw new Error('Failed to fetch user');
     }
 }
+
+export const getUserByKey = async (key,val) => {
+    noStore();
+    try{
+        connectToDb();
+        const query = {};
+        query[key] = val;
+        const user = await User.findOne(query);
+        return user;
+    }catch(err){
+        console.log(err);
+        throw new Error('Failed to fetch user');
+    }
+}
+
+export const createUser = async (data) => {
+    try{
+        connectToDb();
+        const user =  new User(data);
+
+        await user.save();
+
+        return user;
+    }catch(err){
+        console.log(err);
+        return false;
+    }
+}
