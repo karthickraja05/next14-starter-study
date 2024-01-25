@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { Post } from "./model";
 import { connectToDb } from "./utils";
 import { auth, signIn, signOut } from "./auth";
+import { createUser, getUserByKey } from "./data";
 
 
 export const sayHello = async () => {
@@ -58,4 +59,37 @@ export const handleGithubLogin = async () => {
 
 export const handleLogout = async () => {
     await signOut();
+}
+
+export const handleRegister = async (formData) => {
+    const { username , email, password, password_repeat } = Object.fromEntries(formData);
+
+    if(password !== password_repeat){
+        return "Password not match";
+    }
+
+    const user = await getUserByKey('email',email);
+    
+    if(user){
+        return 'Email already present';
+    }
+    
+    const user1 = await getUserByKey('username',username);
+
+    if(user1){
+        return 'User Name already present';
+    }
+
+    const newUser = {
+        username,
+        email,
+        password
+    };
+    try{
+        await createUser(newUser);
+        return "User created Success";
+    }catch(err){
+        return "Somethig went wrong";
+    }
+
 }
