@@ -3,8 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { Post } from "./model";
 import { connectToDb } from "./utils";
-import { auth, signIn, signOut } from "./auth";
+import { signIn, signOut } from "./auth";
 import { createUser, getUserByKey } from "./data";
+import bcrypt from "bcrypt";
 
 
 export const sayHello = async () => {
@@ -69,7 +70,7 @@ export const handleRegister = async (formData) => {
     }
 
     const user = await getUserByKey('email',email);
-    
+
     if(user){
         return 'Email already present';
     }
@@ -80,11 +81,15 @@ export const handleRegister = async (formData) => {
         return 'User Name already present';
     }
 
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password,salt);
+
     const newUser = {
         username,
         email,
-        password
+        password : hashedPassword
     };
+
     try{
         await createUser(newUser);
         return "User created Success";
