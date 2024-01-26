@@ -85,7 +85,7 @@ const Blog = async ({params,searchParams}) => {
                   {
                         apiPostData.map((item,index) => (
                               <div className={styles.post} key={item.id}>
-                                    <PostCard  localItem={item} />
+                                    <PostCard  localItem={item} key={index} />
                               </div>
                         ))
                   }
