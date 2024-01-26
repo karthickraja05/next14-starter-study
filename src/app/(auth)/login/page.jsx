@@ -1,4 +1,4 @@
-import { handleGithubLogin } from "@/lib/action";
+import { handleGithubLogin, handleLogin } from "@/lib/action";
 import styles from './login.module.css';
 
 
@@ -13,7 +13,7 @@ const Login = async () => {
                         </form>
                   </div>
                   <div className={styles.login_creden}>
-                        <form action={handleGithubLogin}>
+                        <form action={handleLogin}>
                               <input type="text" name="username" placeholder="UserName"/>
                               <input type="password" name="password" placeholder="Password"/>
                               <button>Login with Credentials</button>
