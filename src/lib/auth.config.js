@@ -18,8 +18,7 @@ export const authConfig = {
                 session.user.id = token.id;
                 session.user.isAdmin = token.isAdmin;
             }
-            console.log('ssession');
-            console.log(session);
+           
             return session;
         },
         authorized({auth,request}){

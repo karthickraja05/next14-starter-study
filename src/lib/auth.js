@@ -18,6 +18,9 @@ const login = async (credentials) => {
                 error: 'Password Invalid',
             };
         }
+
+        console.log(user);
+
         return user;
 
     } catch (err) {

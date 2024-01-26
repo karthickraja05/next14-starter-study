@@ -65,6 +65,16 @@ export const handleLogin = async (formData) => {
         await signIn('credentials', { username, password });
     } catch (error) {
         console.error('Error during sign-in:', error);
+
+        if(error.message.includes('NEXT_REDIRECT')){
+            return {
+                error: "Invalid Password or Username"
+            };
+        }
+        return {
+            error: "Something went wrong"
+        };
+
     }
 }
 
