@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+.github{
+    display: flex;
+    justify-content: center;
+}
+
+.github > form > button {
+    padding: 20px;
+    border: none;
+    background-color: var(--btn);
+    color: var(--text);
+    font-weight: 600;
+}
+
+.login_creden{
+    display: flex;
+    justify-content: center;
+}
+
+.login_creden > form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 40%;
+    background-color: rgb(31 26 46);
+    padding: 20px;
+}
+
+.login_creden > form > input{
+   padding: 20px;
+}
+
+.login_creden > form > button {
+    padding: 20px;
+    border: none;
+    background-color: var(--btn);
+    color: var(--text);
+    font-weight: 600;
+}
