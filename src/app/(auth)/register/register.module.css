@@ -22,35 +22,15 @@
     padding: 10px;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    
-}
 
-.form input,
-.form textarea {
-    padding: 20px;
-    border: none;
-    outline: none;
-    background-color: var(--bgSoft);
-    color: var(--text);
-}
-
-.form button{
-    padding: 20px;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    background-color: var(--btn);
-    color: var(--text);
-}
-
-.form textarea{
-    resize: none;
-}
 
 .img{
     object-fit: contain;
 }
+
+.login_link{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+

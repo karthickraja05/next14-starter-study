@@ -72,23 +72,29 @@ export const handleLogout = async () => {
     await signOut();
 }
 
-export const handleRegister = async (formData) => {
+export const handleRegister = async (previousState,formData) => {
     const { username, email, password, password_repeat } = Object.fromEntries(formData);
 
     if (password !== password_repeat) {
-        return "Password not match";
+        return {
+            error: "Password not match"
+        };
     }
 
     const user = await getUserByKey('email', email);
 
     if (user) {
-        return 'Email already present';
+        return {
+            error: 'Email already present'
+        };
     }
 
     const user1 = await getUserByKey('username', username);
 
     if (user1) {
-        return 'User Name already present';
+        return {
+            error: 'User Name already present'
+        };
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -102,9 +108,14 @@ export const handleRegister = async (formData) => {
 
     try {
         await createUser(newUser);
-        return "User created Success";
+        return {
+            success: true
+        };
     } catch (err) {
-        return "Somethig went wrong";
+        return {
+            error:  "Somethig went wrong"
+        };
+    
     }
 
 }

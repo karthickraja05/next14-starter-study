@@ -1,5 +1,7 @@
-import { handleRegister } from '@/lib/action';
 import styles from './register.module.css';
+import Link from 'next/link';
+import { RegisterForm } from '@/components/register/RegisterForm';
+
 const Register = () => {
       return (
             <div className={styles.container}>
@@ -8,13 +10,15 @@ const Register = () => {
                               <h1>Register</h1>
 
                         </div>
-                        <form className={styles.form} action={handleRegister}>
-                              <input type="text" name='username' placeholder='UserName' />
-                              <input type="email" name='email' placeholder='Email' />
-                              <input type="password" name='password' placeholder='Password' />
-                              <input type="password" name='password_repeat' placeholder='Confirm Password' />
-                              <button>Register</button>
-                        </form>
+                        <div>
+                              <RegisterForm />
+                        </div>
+                        
+                        <div className={styles.login_link}>
+                        <Link href={'/login'}>
+                              Have an account ? <b>Login</b>
+                        </Link>
+                        </div>
                   </div>
 
             </div>
